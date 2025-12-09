@@ -1,11 +1,10 @@
 require('dotenv').config()
-const { config } = require('dotenv')
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send("Hello Brother!")
 })
 
 app.get('/home', (req,res) => {
@@ -22,4 +21,59 @@ app.get('/contactus', (req,res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+})
+
+//get a List of Data
+
+app.get('/data',(req,res) => {
+  const data = [
+    {
+      id: 1,
+      type: "Wasiq",
+      employed: false
+    },
+
+    {
+      id: 2,
+      type: "Ali",
+      employed: false
+    },
+    {
+      id: 3,
+      type: "Hussain",
+      employed: true
+    }
+  ];
+  res.send(data)
+});
+
+
+app.get('/jokes', (req,res) => {
+  const jokes = [
+    {
+      id: 1,
+      name: "First Joke is Always a Joke in itself!"
+    },
+     {
+      id: 2,
+      name: "Backend Server is ALways Running in itself!"
+    },
+     {
+      id: 3,
+      name: "We are Learning Backend today!"
+    }
+  ];
+  res.send(jokes);
+});
+
+app.get('/guest',(req,res) => {
+  const isGuess = true;
+  if(isGuess !== false){
+    console.log("Your Guess is not Accepted")
+  }
+  else{
+    console.log("You are Correct! ")
+  };
+
+  res.send(isGuess);
 })
